@@ -8,7 +8,7 @@ public class Laser : MonoBehaviour
     //
     private int level = 0;
     //
-    [SerializeField] protected float[] damage;
+    [SerializeField] protected float damage;
     [SerializeField] protected float distanceTool;
     [SerializeField] protected Transform spawnRaycast;
     [SerializeField] protected LayerMask mask;
@@ -40,19 +40,6 @@ public class Laser : MonoBehaviour
     {
         setLaser = value;
     }
-    public bool LevelUpDamage()
-    {
-        if(level >= damage.Length)
-        {
-            return false;
-        }
-        else
-        {
-            level++;
-            return true;
-        }
-        
-    }
     protected virtual void FixedUpdate()
     {
         
@@ -65,6 +52,10 @@ public class Laser : MonoBehaviour
         {
             UpdateLaser();
         }
+    }
+    public void UpgradeLaser(float newDamage)
+    {
+        damage = newDamage;
     }
     protected virtual void UseTool()
     {
@@ -82,7 +73,7 @@ public class Laser : MonoBehaviour
         {
             if (cast && hit2.collider.TryGetComponent(out Health health))
             {
-                health.TakeDamage(damage[level], AttackType.Laser);
+                health.TakeDamage(damage, AttackType.Laser);
             }
             lastTimeActiveTool = Time.time + speedToolDamage;
         }

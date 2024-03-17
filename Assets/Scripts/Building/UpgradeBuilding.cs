@@ -5,6 +5,10 @@ public class UpgradeBuilding : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private GameObject panel, firstButton;
+    private void Start()
+    {
+        panel.SetActive(false);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out VacuumCleaner vacuum))

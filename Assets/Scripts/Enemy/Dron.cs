@@ -29,7 +29,6 @@ public class Dron : EnemyMoving
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if(distance < 3 && !detonation)
         {
-            print("detonation");
             StartCoroutine(Destroy());
             detonation = true;
         }
@@ -46,7 +45,7 @@ public class Dron : EnemyMoving
         }
         CauseDamage();
         GameObject effect = Instantiate(explosion, transform.position, Quaternion.identity);
-        //Destroy(effect, 2f);
+        Destroy(effect, 0.9f);
         Destroy(gameObject);
     }
 

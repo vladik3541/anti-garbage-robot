@@ -17,6 +17,10 @@ public class GarbageProcessingMachine : MonoBehaviour
     [SerializeField] private GameObject resultProduct;
     [SerializeField] private int maxRes, minRes;
 
+    [Header("Anim")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private ParticleSystem fire;
+
     private float timer;
 
     private void Start()
@@ -55,6 +59,8 @@ public class GarbageProcessingMachine : MonoBehaviour
             sliderForCapacity.value = timer;
 
             //animation
+            animator.SetTrigger("oven");
+            fire.Play();
             yield return null;
         }
         //resultat

@@ -6,8 +6,7 @@ public class VacuumCleaner : MonoBehaviour
 {
     //size container
     private int maxVolumContainer = 10;
-    [SerializeField] private int level = 0;
-    [SerializeField] private int[] sizeFromLevel;
+    [SerializeField] private int sizeFromLevel;
     [SerializeField] private int currentVolumeContainer;
     [Header("UI")]
     [SerializeField] private Slider volumeSlider;
@@ -38,6 +37,7 @@ public class VacuumCleaner : MonoBehaviour
     }
     public bool RemoveDebris(int value)
     {
+        print("RemoveDebris");
         if(currentVolumeContainer >= value)
         {
             currentVolumeContainer -= value;
@@ -51,9 +51,10 @@ public class VacuumCleaner : MonoBehaviour
         
         
     }
-    public void UpgradeMaxContainer()
+    public void UpgradeMaxContainer(int size)
     {
-        
+        maxVolumContainer = size;
+        volumeSlider.maxValue = maxVolumContainer;
     }
     private void UpdateUI()
     {

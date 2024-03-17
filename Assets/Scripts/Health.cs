@@ -48,6 +48,7 @@ public class Health: MonoBehaviour
         {
             health = maxHealth;
         }
+        UpdateUI();
     }
     protected virtual void UpdateUI()
     {

@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6766935801357081085}
+  - component: {fileID: 8025020656739254392}
+  - component: {fileID: 3779062600421915043}
+  - component: {fileID: 3573471740941946263}
   m_Layer: 0
   m_Name: BaseAddFuel
   m_TagString: Untagged
@@ -34,6 +37,65 @@ Transform:
   - {fileID: 7695375508677268405}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8025020656739254392
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63389698156161828}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.988238, y: 3.7744262, z: 4.9409447}
+  m_Center: {x: -0.05517316, y: 1.8128353, z: 0.03152752}
+--- !u!114 &3779062600421915043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63389698156161828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68a26a37c31ce24e99b0ea275d740d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 7679494833131065384}
+  firstButton: {fileID: 8550754341561368956}
+--- !u!114 &3573471740941946263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63389698156161828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f39e064de5ea614a955b1762cfd6701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upTools:
+  - cost: 10
+    damageLaser: 20
+    damageBomb: 65
+  - cost: 15
+    damageLaser: 35
+    damageBomb: 80
+  upContainers:
+  - cost: 10
+    size: 15
+  - cost: 15
+    size: 20
 --- !u!1 &820789484654499147
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +161,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Get Healht or fuel
+  m_text: 'Upgrate
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -126,7 +190,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.4
+  m_fontSize: 44.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -284,7 +348,7 @@ GameObject:
   - component: {fileID: 7084532814416108368}
   - component: {fileID: 8368251916905426007}
   m_Layer: 5
-  m_Name: MedKit
+  m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,9 +456,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7052405205150207923}
-        m_TargetAssemblyTypeName: BaseFuel, Assembly-CSharp
-        m_MethodName: DeliverMedkit
+      - m_Target: {fileID: 3573471740941946263}
+        m_TargetAssemblyTypeName: UpgradeTools, Assembly-CSharp
+        m_MethodName: UpLevelContainer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -469,11 +533,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Fuel
+  m_text: 'Upgrade
 
-    Cost
+    Damage
 
-    10'
+    10
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -628,8 +694,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6130306266743382290}
-  - component: {fileID: 6676676762908770850}
-  - component: {fileID: 7052405205150207923}
   - component: {fileID: 197301568426773834}
   - component: {fileID: 6086783299619405812}
   m_Layer: 0
@@ -654,47 +718,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6766935801357081085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6676676762908770850
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8370262519029518985}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 34.782158, z: 1}
-  m_Center: {x: 0, y: 16.891077, z: 0}
---- !u!114 &7052405205150207923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8370262519029518985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ca3f925f44eae74ba0a92b8bebdefc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  costFuel: 10
-  costMedKit: 10
-  fuel: {fileID: 6825070950489667393, guid: 3f21485a38b037242b4abf585195b5e6, type: 3}
-  medKit: {fileID: 6963633047971871940, guid: a614d70b9936daf44a8a42e149f3a63e, type: 3}
-  pointSpawn: {fileID: 7695375508677268405}
-  timeDeliver: 1
-  panel: {fileID: 7679494833131065384}
-  firstButton: {fileID: 8550754341561368956}
 --- !u!23 &197301568426773834
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -758,7 +781,7 @@ GameObject:
   - component: {fileID: 8320073840379420487}
   - component: {fileID: 6438949854678629657}
   m_Layer: 5
-  m_Name: Fuel
+  m_Name: Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -866,9 +889,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7052405205150207923}
-        m_TargetAssemblyTypeName: BaseFuel, Assembly-CSharp
-        m_MethodName: DeliverFuel
+      - m_Target: {fileID: 3573471740941946263}
+        m_TargetAssemblyTypeName: UpgradeTools, Assembly-CSharp
+        m_MethodName: UpLevelTools
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -943,7 +966,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MedKit
+  m_text: 'Container
 
     Cost
 

@@ -13,6 +13,7 @@ public class SellProductsBehaviour : MonoBehaviour
         if(collision.gameObject.CompareTag("Resource"))
         {
             ProgressManager.instans.AddProgres(countToProgres);
+            collision.gameObject.transform.position = StartPosition.position;
             MoveResource(collision.gameObject);
         }
     }

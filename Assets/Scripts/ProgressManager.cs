@@ -9,9 +9,9 @@ public class ProgressManager : MonoBehaviour
     public static ProgressManager instans;
     
     private int progress;
+    [SerializeField] private int goal;
 
     [SerializeField] private TextMeshProUGUI progressText;
-    [SerializeField] private Slider progressSlider;
     [SerializeField] private TextMeshProUGUI timeCount;
     [SerializeField] private float timer;
 
@@ -19,8 +19,6 @@ public class ProgressManager : MonoBehaviour
     private void Awake()
     {
         instans = this;
-        progressSlider.maxValue = 100;
-        progressSlider.value = 0;
         UpdateUI();
     }
     private void Update()
@@ -28,7 +26,7 @@ public class ProgressManager : MonoBehaviour
         timer -= Time.deltaTime;
         int minutes = Mathf.FloorToInt(timer / 60);
         int seconds = Mathf.FloorToInt(timer % 60);
-        timeCount.text = "Timer: " + string.Format("{0}:{1:00}", minutes, seconds);
+        timeCount.text = string.Format("{0}:{1:00}", minutes, seconds);
     }
     public void AddProgres(int value)
     {
@@ -38,7 +36,6 @@ public class ProgressManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        progressText.text = "progress: " + progress.ToString() + "%";
-        progressSlider.value = progress;
+        progressText.text = progress.ToString() + "/" + goal.ToString();
     }
 }

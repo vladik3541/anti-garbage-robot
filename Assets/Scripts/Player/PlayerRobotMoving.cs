@@ -16,7 +16,7 @@ public class PlayerRobotMoving : MonoBehaviour
     private Main inputActions;
     private Vector2 move;
 
-    private Animator animator;
+    public Animator animator;
     //gravity
     private float gravity = -9.81f;
     [SerializeField] private float gravityMultiplay = 3f;
@@ -26,7 +26,6 @@ public class PlayerRobotMoving : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         inputActions = new Main();
-        animator = GetComponent<Animator>();
     }
     private void OnEnable()
     {
@@ -78,14 +77,14 @@ public class PlayerRobotMoving : MonoBehaviour
     {
         Vector3 directionMove = new Vector3(move.x * speed, velocity, move.y * speed);
         characterController.Move(directionMove * Time.deltaTime);
-        /*if (move.sqrMagnitude == 0)
+        if (move.sqrMagnitude == 0)
         {
             animator.SetBool("Run", false);
         }
         else
         {
             animator.SetBool("Run", true);
-        }*/
+        }
     }
     private void ApplyGravity()
     {

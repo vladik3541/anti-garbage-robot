@@ -6,9 +6,9 @@ public class SpawnBomb : MonoBehaviour
 {
     
     [SerializeField] private float consumptionBomb = 5;
-    [SerializeField] private GameObject bomb;
+    public GameObject bomb;
     [SerializeField] private Transform spawnPosition;
-    [SerializeField] private Transform endPosition;
+    [SerializeField] private float forceShoot;
 
     [SerializeField] private float spawnRate;
 
@@ -17,6 +17,8 @@ public class SpawnBomb : MonoBehaviour
     private float lastSpawnTime;
     protected PlayerInput playerInput;
     private BaggageFuel getBaggageFuel;
+    public Animator animator;
+    public ParticleSystem fireEffect;
 
     void OnEnable()
     {
@@ -32,9 +34,11 @@ public class SpawnBomb : MonoBehaviour
     {
         if(lastSpawnTime < Time.time && getBaggageFuel.RemoveFuel(consumptionBomb))
         {
-            GameObject clone = Instantiate(bomb, spawnPosition.position, Quaternion.identity);
-            clone.transform.DOJump(endPosition.position, jumpPower, 1, durationJump);
+            GameObject clone = Instantiate(bomb, spawnPosition.position, transform.rotation);
+            clone.GetComponent<Rigidbody>().AddForce(spawnPosition.forward * forceShoot, ForceMode.Force);
             lastSpawnTime = Time.time + spawnRate;
+            animator.SetTrigger("ShotBomb");
+            fireEffect.Play();
         }
 
     }

@@ -12,6 +12,8 @@ public class GetFuelAndMedKitBuild : MonoBehaviour
     private VacuumCleaner player;
     [Header("UI")]
     [SerializeField] private GameObject panel, firstButton;
+    [Header("Audio")]
+    [SerializeField] private AudioSource buySound;
 
     private void Start()
     {
@@ -47,6 +49,7 @@ public class GetFuelAndMedKitBuild : MonoBehaviour
     {
         if(player.RemoveDebris(costFuel))
         {
+            buySound.Play();
             Instantiate(fuel, pointSpawn.position, Quaternion.identity);
             print("fuel");
         }
@@ -56,6 +59,7 @@ public class GetFuelAndMedKitBuild : MonoBehaviour
     {
         if (player.RemoveDebris(costMedKit))
         {
+            buySound.Play();
             Instantiate(medKit, pointSpawn.position, Quaternion.identity);
             print("MedKit");
             

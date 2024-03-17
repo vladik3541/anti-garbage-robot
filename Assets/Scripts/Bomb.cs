@@ -20,7 +20,10 @@ public class Bomb : MonoBehaviour
     {
         Invoke(nameof(Explosion), timeToExplosion);
     }
-
+    public void UpgradeDamage(float newDamage)
+    {
+        damage = newDamage;
+    }
     public virtual void Explosion()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radiusExplosion, mask);
